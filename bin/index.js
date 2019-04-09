@@ -6,7 +6,9 @@ const Logger = require('../lib/logger')
 global.logger = new Logger(process.env.MISCORD_LOG_LEVEL || 'info')
 const miscord = require('../')
 const sendError = require('../lib/error')
-const { getConfig, getConfigDir } = require('../lib/config')
+const cfg = require('../lib/config')
+const getConfig = cfg.getConfig
+const getConfigDir = cfg.getConfigDir
 
 const fork = d => cluster.fork({ DATA_PATH: d }).on('online', () => { lastRunTime = new Date() })
 
